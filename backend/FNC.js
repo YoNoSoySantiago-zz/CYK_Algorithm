@@ -1,24 +1,34 @@
 class FNC{
     constructor(){
-        this.gramatica = {};
+        this.grammar = {};
         this.firstVariable = '';
     }
 
-    // Funcion que se encarga de agregar una transition a la gramatica
-    // Dando como entrado una variable y una lista de transiciones
-    addTransition(variable, transiciones){
-        //this.gramatica[variable] = transiciones; #TODO: Revisar las condiciones necesarias antes de agregar
+    // Function that is in charge of adding a transition to the grammar
+    // Giving as input a variable and a list of transitions.
+    addTransition(variable, transitions){
+        //this.grammar[variable] = transitions; #TODO: Check necessary conditions before adding
     }
 
-    // Funcion que se encarga de revisar si la gramatica se encuentra en forma normal de Chomsky
-    checkFormaNormalChomsky(){
+    // Function that checks if the grammar is in Chomsky normal form.
+    // Returns a boolean indicating whether the grammar is in Chomsky normal form or not
+    checkChomskyNormalForm(){
 
     }
 
-    // Funcion que se encarga de revisar si una cadena es aceptada por la gramatica correspondiente
-    // Dando como entrada una cadena w
-    // Retorna un booleano indicando si la cadena es aceptada o no
-    checkCadena(w){
-       
-    } 
+    // Function that is in charge of checking if a string is accepted by the corresponding grammar
+    // Giving as input a string of n terminals
+    // Returns a boolean indicating whether the string is accepted or not
+    checkCadena(cadena){
+        //dividir cadena en un arreglo de terminales
+        let terminales = cadena.split('');
+        //
+    }
+
+    // Function that is in charge of return all varibles that contains a especific transition
+    // Giving as input a transition
+    // Returns a list of variables
+    getVariables(transition){
+        //
+    }
 }
