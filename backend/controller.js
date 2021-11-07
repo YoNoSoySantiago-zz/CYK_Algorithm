@@ -1,15 +1,29 @@
 class Controller{ 
-     
-    createFNC(){
-        var fnc = new FNC();
-        for(var s=0;s<10;s++){
-            for(var m=0;m<10;m++){
-                
+    constructor(){
+       this.fnc=new FNC();
+    }
+
+    validateGrammar(grammar,cadena){
+        var belongs=false;
+        var validateFormat=validateFormat(grammar);
+        if(validateFormat){
+            createFNC(grammar);
+            var isChomskyNormalForm=this.fnc.checkChomskyNormalForm();
+            if(isChomskyNormalForm){
+                belongs=this.fnc.checkCadena(cadena);             
             }
         }
-
+        return belongs;
     }
-    validateGrammar(grammar){
+
+    createFNC(grammar){
+        var linesGrammar = grammar.split('\n');
+        for(var s=0;s<linesGrammar.length;s++){
+            var separate=linesGrammar[s].split("->");
+            fnc.addTransition(separate[0],separate[1]);
+        }
+    }
+    validateFormat(grammar){
         var linesGrammar = grammar.split('\n');
         var format=false;
         for(var s=0;s<linesGrammar.length && format==false;s++){
@@ -17,12 +31,12 @@ class Controller{
            if(separate[0].length==1){
                var transitions=separate[1].split("|");
                for(var m=0;m<transitions.length && format==false;m++){
-                   if(transitions[m].includes(" ")==true);
+                   if(transitions[m].includes(" "));
                    format=true;
                }
            }
         }
-        if(format==false){
+        if(!format){
             return true;
         }else{
             return false;
@@ -43,7 +57,7 @@ class FNC{
     // Function that is in charge of adding a transition to the grammar
     // Giving as input a variable and a list of transitions.
     addTransition(variable, transitions){
-        //this.grammar[variable] = transitions; #TODO: Check necessary conditions before adding
+        this.grammar[variable] = transitions; 
     }
 
     // Function that checks if the grammar is in Chomsky normal form.
