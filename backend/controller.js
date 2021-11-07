@@ -3,8 +3,10 @@ class Controller{
        this.fnc=new FNC();
     }
 
-    validateGrammar(grammar,cadena){
+    validateGrammar(){
         var belongs=false;
+        var grammar = document.getElementById("inputTextArea").innerHTML;
+        var cadena = document.getElementById("idSentence").innerHTML;
         var validateFormat=validateFormat(grammar);
         if(validateFormat){
             createFNC(grammar);
