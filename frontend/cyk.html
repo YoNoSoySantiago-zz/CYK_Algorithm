@@ -5,41 +5,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KYC</title>
+  <title>CYK Algorithm</title>
   <!--link css-->
-  <link type="tet/CSS" rel="stylesheet" href="./style.css"></link>
+  <link rel="stylesheet" href="styles.css">
 
   <!--link botonoes-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
   <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <!--Cuerpo del html iniciooo-->
-  <body>
-
-
-  <form action="" target="_blank">
+  <body id="fondo" > 
+    
     <!--Inicio del  div html para que todo quede centrado-->
     <div Align="center">
-      <H1>KYC</H1>
+      <h1>CYK Algorithm</h1>
       <!--Input -->
       <!--<p> espacio abajo-->
-      <p> <span class="label"> Oración: </span></p>
+      <p> <span class="label txt" > Sentence: </span></p>
 
-      <input id="idSentence"  type="text" size="50" value="" placeholder=" Escriba la oración para verificar la gramática aqui ">
+      <input id="idSentence" class="conteiner txt transparent" type="text" size="50" value="" placeholder="Write the sentence to check in grammar here">
 
       <p>
-      <div id="cykInput" class="input">Gramática(debe estar en CNF):</div>
+      <div id="cykInput" class="input txt" style="text-align: center;">Grammar (must be in FNC):</div>
       </p>
       <br />
 
-      <textarea id="inputTextArea" name="textareaInput" rows="15" cols="70"
-        placeholder="Escriba la Gramática en forma normal de chomsky"
+      <textarea class="transparent conteiner txt"id="inputTextArea"name="textareaInput" rows="15" cols="70"
+        placeholder="Write Grammar in Chomsky's normal form (You can use '*' to represent void)&#10;&#10;Example:&#10;&#10;S->BA|AB&#10;A->CA|a&#10;B->BB|b&#10;C->BA|c&#10;&#10;please make sure your grammar follows the example format"
         style="margin: 0px; width: 347px; height: 330px;"></textarea>
         <!--Texto de ejemplo aqui =  ANTES DE </textarea> --> 
 
 
-        <p> <button type="button" class="btn btn-info m-btn m-btn--custom" id="validate" > Verificar </button> </p>
+        <p> <button type="button" class="btn transparent txt" id="validate" > Check </button> </p>
    
         <!--codigo boton de validar todo mensaje bien o mal-->
 
@@ -72,28 +70,18 @@
 
         </script>
 
-      <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, assumenda. Sapiente optio alias reiciendis voluptate nesciunt illo? Aut eveniet ipsam itaque consequatur ducimus consequuntur tenetur expedita, pariatur, soluta iusto doloremque!</p>
-
+      <!--<p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, assumenda. Sapiente optio alias reiciendis voluptate nesciunt illo? Aut eveniet ipsam itaque consequatur ducimus consequuntur tenetur expedita, pariatur, soluta iusto doloremque!</p>
+      -->
 
       <p><a href="https://github.com/YoNoSoySantiago/CYK_Algorithm" target='_blank'>github</a></p>
-   
-
-        
+      <!--
       <table class="ejemplo">
 
         <tr>
-      
-        
-      
-          <td>    <p><a href="" target='_blank'>ejemplo1</a></p></td>
-      
+          <td> <p><a href="" target='_blank'>ejemplo1</a></p></td>
           <td> <p><a href="" target='_blank'>ejemplo2 </a></p> </td>
-      
         </tr>
-
-   
-     
-       
+      -->
     </div>
    <!--Final del  div html para que todo quede centrado-->
   </body>
