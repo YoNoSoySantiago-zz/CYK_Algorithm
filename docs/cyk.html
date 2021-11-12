@@ -37,7 +37,7 @@
         <!--Texto de ejemplo aqui =  ANTES DE </textarea> --> 
 
 
-        <p> <button type="button" class="btn transparent txt" id="validate" > Check </button> </p>
+        <p> <button onclick="solve" type="button" class="btn transparent txt" id="validate" > Check </button> </p>
    
         <!--codigo boton de validar todo mensaje bien o mal-->
 
@@ -86,4 +86,12 @@
    <!--Final del  div html para que todo quede centrado-->
   </body>
 <!--final del html iniciooo-->
+<script src="/backend/controller.js"> </script>
+<script src="/backend/FNC.js"> </script>
+<script>
+  var controller = new Controller();
+  controller.validateCadena('wweas');
+  
+
+</script>
 </html>

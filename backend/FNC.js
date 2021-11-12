@@ -89,3 +89,11 @@ class FNC{
         return variables;   
     }
 }
+
+let fnc = new FNC();
+fnc.addTransition('S', ['AB', 'BA']);
+fnc.addTransition('A', ['a']);
+fnc.addTransition('B', ['a']);
+
+fnc.checkChomskyNormalForm();
+fnc.checkCadena('a');
