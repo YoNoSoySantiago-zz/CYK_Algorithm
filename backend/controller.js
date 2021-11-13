@@ -8,8 +8,9 @@ class Controller{
         var belongs=false;
         var grammar = document.getElementById("inputTextArea").value;
         var cadena = document.getElementById("idSentence").value;
-        var validateFormat=validateFormat(grammar);
-        var validateCadena=validateCadena(cadena);
+        var validateFormat= this.validateGrammarFormat(grammar);
+        var validateCadena= this.validateCadena(cadena);
+		console.log(validateFormat);
         if(validateCadena){
          if(validateFormat){
             createFNC(grammar);
@@ -34,20 +35,21 @@ class Controller{
     }
     //Method that validates if the string that is entered belongs to the 
     //grammar has the correct format
-    validateCadena(cadena){ //CAMBIAR TO CADENA
+    validateCadena(cadena){ 
         var format=true;
         for(var s=0;s<cadena.length && format==true;s++){
              if(cadena.charCodeAt(s)<97 || cadena.charCodeAt(s)>122){
                 format=false;
             }
         }
+		return format;
     }
     //Method to create the FNC with the correct variables and transitions
     createFNC(grammar){
         var linesGrammar = grammar.split('\n');
         for(var s=0;s<linesGrammar.length;s++){
             var separate=linesGrammar[s].split("->");
-            fnc.addTransition(separate[0],separate[1]);
+            this.fnc.addTransition(separate[0],separate[1].split("|"));
         }
     }
     //Method that validates if there are two repeated data in an array
@@ -63,24 +65,23 @@ class Controller{
     }
     //Method that validates if the variables and transitions to
     // be added to the FNC have a suitable format
-    validateFormat(grammar){
+    validateGrammarFormat(grammar){
         var linesGrammar = grammar.split("\n");
 		var format = true;
 		for (var s = 0; s < linesGrammar.length && format; s++)
 		{
 			var separate = linesGrammar[s].split("->");
-			var transitions = separate[1].split("\\|");
+			var transitions = separate[1].split("|"); 
 			for (var m = 0; m < transitions.length && format; m++)
 			{
 				if (transitions[m].includes(" ") == false)
 				{
 					for (var i = 0; i < transitions[m].length && format; i++)
 					{
-						var letter = transitions[m].charAt(i);
-						console.log(parseInt(letter));
-						if (parseInt(letter) < 65 || parseInt(letter) > 122)
+						var charCode = transitions[m].charCodeAt(i);
+						if (charCode < 65 || charCode > 122)
 						{
-							if (parseInt(letter) == 42)
+							if (charCode == 42)
 							{
 								format = true;
 							}
@@ -98,6 +99,7 @@ class Controller{
 			}
 		}
 		var variables = Array(linesGrammar.length).fill(null);
+		console.log(variables);
 		var exist = false;
 		for (var s = 0; s < linesGrammar.length && format; s++)
 		{
@@ -168,6 +170,9 @@ class Controller{
 			}
 		}
     }
-
+	//Method that check if the sentence belongs to the grammar
+	checkCadena(cadena){
+		return this.fnc.checkCadena(cadena);
+	}
 }
 

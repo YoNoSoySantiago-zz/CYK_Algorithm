@@ -11,7 +11,7 @@ class FNC{
     // Function that is in charge of adding a transition to the grammar
     // Giving as input a variable and a list of transitions.
     addTransition(variable, transitions){
-        //this.grammar[variable] = transitions; #TODO: Check necessary conditions before adding
+        this.grammar[variable] = transitions; //#TODO: Check necessary conditions before adding
     }
 
     // Function that checks if the grammar is in Chomsky normal form.
@@ -41,7 +41,6 @@ class FNC{
     checkCadena(cadena){
         //divide the string in tokens
         let terminales = cadena.split('');
-
         let matrix = [];
         let firstsVariables = [];
         //Initilization
@@ -51,13 +50,15 @@ class FNC{
             firstsVariables[i] = currentVariables;
         }
         matrix[0] = firstsVariables;
+        console.log(matrix);
         // Bucle for the rest of the matrix
-        let n = terminales.length;
-        for(let j = 2; j <= n; j++){
+        let n = terminales.length-1;
+        for(let j = 1; j <= n; j++){
             for(let i = 0; i <= n - j; i++){
                 let currentVariables = [];
                 for(let k = 0; k < j; k++){
-                    let currentTransition = matrix[i][k] + matrix[i + k + 1][j - k - 1];
+                    console.log(i,k);
+                    let currentTransition = matrix[i][k] + matrix[i + k][j - k];
                     currentVariables = this.getVariables(currentTransition);
                 }
                 matrix[j-1][i] = currentVariables;
@@ -66,20 +67,10 @@ class FNC{
         return (matrix[n-1][0].includes(this.firstVariable));
     }
 
-    // Function that is in charge of checking if a string is accepted by the corresponding grammar
-    // Giving as input a string of n terminals
-    // Returns a boolean indicating whether the string is accepted or not
-    checkCadena(cadena){
-        //dividir cadena en un arreglo de terminales
-        let terminales = cadena.split('');
-        //
-    }
-
     // Function that is in charge of return all varibles that contains a especific transition
     // Giving as input a transition
     // Returns a list of variables
     getVariables(transition){
-
         let variables = [];
         for(let variable in this.grammar){
             if(this.grammar[variable].includes(transition)){
@@ -89,11 +80,3 @@ class FNC{
         return variables;   
     }
 }
-
-let fnc = new FNC();
-fnc.addTransition('S', ['AB', 'BA']);
-fnc.addTransition('A', ['a']);
-fnc.addTransition('B', ['a']);
-
-fnc.checkChomskyNormalForm();
-fnc.checkCadena('a');
