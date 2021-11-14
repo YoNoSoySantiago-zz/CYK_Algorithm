@@ -10,19 +10,15 @@ class Controller{
         var cadena = document.getElementById("idSentence").value;
         var validateFormat= this.validateGrammarFormat(grammar);
         var validateCadena= this.validateCadena(cadena);
-		console.log(validateFormat);
         if(validateCadena){
-         if(validateFormat){
-            createFNC(grammar);
-            var isChomskyNormalForm=this.fnc.checkChomskyNormalForm();
-            if(isChomskyNormalForm){
-                belongs=this.fnc.checkCadena(cadena);   
-                if(belongs){
-                    return 0;//The string belongs to the grammar
-                }          
-            }
-        }
-    }
+         	if(validateFormat){
+            	this.createFNC(grammar);
+            	var isChomskyNormalForm=this.fnc.checkChomskyNormalForm();
+            	if(isChomskyNormalForm){
+                	return 0;        
+            	}
+        	}
+    	}
         if(!validateCadena){
             return -2;//The format of the cadena that the user entered is not correct
         }
@@ -32,6 +28,7 @@ class Controller{
         if(!isChomskyNormalForm){
             return 1;// Grammar is not in normal chunsky form
         }
+		console.log("gasd");
     }
     //Method that validates if the string that is entered belongs to the 
     //grammar has the correct format
@@ -74,7 +71,7 @@ class Controller{
 		for (var s = 0; s < linesGrammar.length && format; s++)
 		{
 			var separate = linesGrammar[s].split("->");
-			var transitions = separate[1].split("|"); 
+			var transitions = separate[1].split('|'); 
 			for (var m = 0; m < transitions.length && format; m++)
 			{
 				if (transitions[m].includes(" ") == false)
@@ -101,8 +98,8 @@ class Controller{
 				}
 			}
 		}
+		
 		var variables = Array(linesGrammar.length).fill(null);
-		console.log(variables);
 		var exist = false;
 		for (var s = 0; s < linesGrammar.length && format; s++)
 		{
@@ -118,8 +115,8 @@ class Controller{
 				{
 					if (separate[0].length == 1)
 					{
-						var letter = separate[0].charAt(0);
-						if (parseInt(letter) > 64 && parseInt(letter) < 91)
+						var letter = separate[0].charCodeAt(0);
+						if ((letter) > 64 && (letter) < 91)
 						{}
 						else
 						{
@@ -136,11 +133,8 @@ class Controller{
 			{
 				if (separate[0].length == 1)
 				{
-					var letter = separate[0].charAt(0);
-					if (parseInt(letter) > 64 && parseInt(letter) < 91)
-					{}
-					else
-					{
+					var letter = separate[0].charCodeAt(0);
+					if (!(letter > 64 && letter < 91)){
 						format = false;
 					}
 				}
@@ -152,7 +146,7 @@ class Controller{
 		}
         if (format == true)
 		{
-			if (JavaCode.existeEnArreglo(variables))
+			if (this.validateIfExist(variables))
 			{
 				return true;
 			}

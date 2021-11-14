@@ -91,8 +91,15 @@ class FNC{
             }
         }
         let accepted = false;
-        if(matrix[0][terminales.length-1].includes(this.firstVariable)){
-            accepted = true;
+        console.log(cadena.length);
+        if(cadena.length == 0){
+            if(this.getVariables("*").length > 0){
+                accepted = true;
+            }
+        }else{
+            if(matrix[0][terminales.length-1].includes(this.firstVariable)){
+                accepted = true;
+            }
         }
         return accepted;
     }
