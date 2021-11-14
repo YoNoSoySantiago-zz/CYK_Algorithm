@@ -42,29 +42,59 @@ class FNC{
         //divide the string in tokens
         let terminales = cadena.split('');
         let matrix = [];
-        let firstsVariables = [];
+       
         //Initilization
         for(let i = 0; i < terminales.length; i++){
-            let token = terminales[i];
-            let currentVariables = this.getVariables(token);
-            firstsVariables[i] = currentVariables;
+            var aux = [];
+            for(let j = 0; j < terminales.length; j++){
+               aux[j] = [];
+            }
+            matrix[i] = aux;
         }
-        matrix[0] = firstsVariables;
-        console.log(matrix);
-        // Bucle for the rest of the matrix
-        let n = terminales.length-1;
-        for(let j = 1; j <= n; j++){
-            for(let i = 0; i <= n - j; i++){
-                let currentVariables = [];
-                for(let k = 0; k < j; k++){
-                    console.log(i,k);
-                    let currentTransition = matrix[i][k] + matrix[i + k][j - k];
-                    currentVariables = this.getVariables(currentTransition);
+        
+        //Firsts variables
+        for(let i = 0; i < terminales.length; i++){
+            matrix[i][i] = this.getVariables(terminales[i]);
+        }
+        // for(let i = 0; i < terminales.length; i++){
+        //     let string = "";
+        //     for(let j = i; j < terminales.length; j++){
+        //         string+=(matrix[i][j].toString())+ " ";
+        //     }
+        //     console.log(string);
+        // }
+        for(let l = 1; l <= terminales.length-1; l++){
+            for(let r = 0; r <= terminales.length - l - 1; r++){
+                for(let t =0; t <= l -1; t++){
+                    let left = matrix[r][r+t];
+                    let right = matrix[r+t+1][r+l];
+                    let allVariables = [];
+                    // console.log("left:",r,r+t,left);
+                    // console.log("right",r+t+1,r+l,right);
+                    for(let b of left){
+                        for(let a of right){
+                            let transition = b + a;
+                            let variables = this.getVariables(transition);
+                            for(let v of variables){
+                                if(!allVariables.includes(v)){
+                                    allVariables.push(v);
+                                }
+                            }
+                        }
+                    }
+                    for(let variable of allVariables){
+                        if(!matrix[r][r+l].includes(variable)){
+                            matrix[r][r+l].push(variable);
+                        }
+                    }
                 }
-                matrix[j-1][i] = currentVariables;
             }
         }
-        return (matrix[n-1][0].includes(this.firstVariable));
+        let accepted = false;
+        if(matrix[0][terminales.length-1].includes(this.firstVariable)){
+            accepted = true;
+        }
+        return accepted;
     }
 
     // Function that is in charge of return all varibles that contains a especific transition
@@ -78,5 +108,11 @@ class FNC{
             }
         }
         return variables;   
+    }
+
+    // Function that set the value to the first variable of the grammar
+    // Giving as input a string
+    setFirstVariable(firstVariable){
+        this.firstVariable = firstVariable;
     }
 }

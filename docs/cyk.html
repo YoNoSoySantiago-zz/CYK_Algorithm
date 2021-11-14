@@ -37,7 +37,7 @@
         <!--Texto de ejemplo aqui =  ANTES DE </textarea> --> 
 
 
-        <p> <button type="button" class="btn transparent txt" id="validate" > Check </button> </p>
+        <p> <button onclick="solve" type="button" class="btn transparent txt" id="validate" > Check </button> </p>
    
         <!--codigo boton de validar todo mensaje bien o mal-->
 
@@ -62,9 +62,7 @@
 <script src="/backend/controller.js"> </script>
 <script src="/backend/FNC.js"> </script>
 <script>
-  
   let controller = new Controller();
-  
   var SweetAlert = function () {
     var success=function (){
       $('#validate').click(function (e) {
@@ -85,10 +83,12 @@
    
     return {
         init: function () {
-            let aux = controller.validateGrammar();
+            controller.createFNC(document.getElementById('inputTextArea').value);
+            let aux = 0;
             if(aux == 0){
+              let sentence = document.getElementById('idSentence').value;
               let result = controller.checkCadena(sentence);
-              if(result == true){
+              if(result==true){
                 success();
               }else{
                 fail();
@@ -99,7 +99,9 @@
         },
     };
   }();
-
+  solve = function () {
+    SweetAlert.init();
+  };
     //== Class Initialization de jquery 
   jQuery(document).ready(function () {
       SweetAlert.init();

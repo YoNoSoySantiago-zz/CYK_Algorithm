@@ -50,6 +50,9 @@ class Controller{
         for(var s=0;s<linesGrammar.length;s++){
             var separate=linesGrammar[s].split("->");
             this.fnc.addTransition(separate[0],separate[1].split("|"));
+			if(s==0){
+				this.fnc.setFirstVariable(separate[0]);
+			}
         }
     }
     //Method that validates if there are two repeated data in an array
