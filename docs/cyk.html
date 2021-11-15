@@ -24,18 +24,42 @@
     <h1>CYK Algorithm</h1>
     <!--Input -->
     <!--<p> espacio abajo-->
-    <p> <span class="label txt"> Sentence: </span></p>
+    <p> <span class="label txt" style="font-weight: bold;"> Sentence: </span></p>
 
     <input id="idSentence" class="conteiner txt transparent" type="text" size="50" value=""
       placeholder="Write the sentence to check in grammar here">
 
     <p>
-    <div id="cykInput" class="input txt" style="text-align: center;">Grammar (must be in FNC):</div>
+    <div id="cykInput" class="input txt" style="text-align: center; font-weight: bold;">Grammar (must be in FNC):</div>
     </p>
-    <br />
+    <div style="width: 50%; padding-left: 20%;">
+      <ul class="input txt2" >
+        <li>
+          <p>
+            has no useful variables.
+          </p>
+        </li>
+        <li>
+          <p>
+            has no productions λ(except possibly S→λ).
+          </p>
+        </li>
+        <li>
+          <p>
+            All productions are of the form: A→a(simple productions) or A→BC(binary productions). B,C ≠ S
+          </p>
+        </li>
+      </ul>
+    </div>
+    
+    <p>
+      <button onclick="example1()" id="example1" class="input txt example"  >Example 1</button>
+
+      <button onclick="example2()" id="example2" class="input txt example">Example 2</button>
+    </p>
 
     <textarea class="transparent conteiner txt" id="inputTextArea" name="textareaInput" rows="15" cols="70"
-      placeholder="Write Grammar in Chomsky's normal form (You can use '*' to represent void)&#10;&#10;Example:&#10;&#10;S->BA|AB&#10;A->CA|a&#10;B->BB|b&#10;C->BA|c&#10;&#10;please make sure your grammar follows the example format"
+      placeholder="Write Grammar in Chomsky's normal form:&#10;     use '*' to represent λ&#10;     use '->' to represent →&#10;     do not include blank spaces&#10;Example:&#10;&#10;S->BA|AB&#10;A->CA|a&#10;B->BB|b&#10;C->BA|c&#10;&#10;please make sure your grammar follows the format"
       style="margin: 0px; width: 347px; height: 330px;"></textarea>
     <!--Texto de ejemplo aqui =  ANTES DE </textarea> -->
 
@@ -65,23 +89,9 @@
                 target='_blank'>USER MANUAL 📖</a></p>
           </td>
 
-<!-- INSERTE AQUI LINK DEL EJEMPLO-->
-          <td>
-            <p><a href="example1.html"
-                target='_blank'> EXAMPLE 📖</a></p>
-          </td>
-
         </tr>
       </table>
     </div>
-    <!--
-      <table class="ejemplo">
-
-        <tr>
-          <td> <p><a href="" target='_blank'>ejemplo1</a></p></td>
-          <td> <p><a href="" target='_blank'>ejemplo2 </a></p> </td>
-        </tr>
-      -->
   </div>
   <!--Final del  div html para que todo quede centrado-->
 </body>
@@ -102,6 +112,16 @@
     swal('Warning', 'The grammar is wrong, please follow the instruccions', 'warning');
   };
 
+  var info_example1 = function () {
+    swal('Info', 'This grammar generate the any of the following lenguages:\n\n'+ 
+                  '1. ab⁺\n'+'2.  bⁿaⁱ; i≤n\n'+'3.  b⁺c⁺a⁺b*', 'info');
+  };
+
+  var info_example2 = function () {
+    swal('Info', 'This grammar generate the any of the following lenguages:\n\n'+ 
+                  '1. (b*a⁺b*)*','info');
+  };
+
   solve = function () {
     let aux = controller.validateGrammar();
     console.log(aux);
@@ -117,6 +137,23 @@
     } else {
       this.warning();
     }
+  };
+
+  example1 = function () {
+    document.getElementById('inputTextArea').value = "S->BA|AB\nA->CA|a\nB->BB|b\nC->BA|c";
+    this.info_example1();
+  };
+
+  example2 = function () {
+    document.getElementById('inputTextArea').value =  "S->AC|BB|AB|AX|FA|a|*\n"+
+                                                      "X->AC|BB|AB|AX|FA|a\n"+
+                                                      "A->FA|a\n"+
+                                                      "B->GD|GX|GB|b\n"+
+                                                      "F->a\n"+
+                                                      "G->b\n"+
+                                                      "C->XB\n"+
+                                                      "D->BX";
+    this.info_example2();
   };
 
 </script>

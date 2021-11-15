@@ -30,8 +30,26 @@
     resize: none;
 }
 
-.txt {
+.example {
+    background-color: rgba(0, 0, 0, 0);
     color: white;
+    resize: none;
+    border: 0ch; 
+    padding: 0px 50px;
+    text-decoration: underline
+}
+
+.txt {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: left;
+    top: 50%;
+    left: 50%;
+}
+
+.txt2 {
+    color: rgba(255, 255, 255, 0.692);
     font-size: 20px;
     font-family: "Times New Roman", Times, serif;
     text-align: left;
