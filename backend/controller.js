@@ -70,31 +70,39 @@ class Controller{
 		var format = true;
 		for (var s = 0; s < linesGrammar.length && format; s++)
 		{
-			var separate = linesGrammar[s].split("->");
-			var transitions = separate[1].split('|'); 
-			for (var m = 0; m < transitions.length && format; m++)
-			{
-				if (transitions[m].includes(" ") == false)
+			if(linesGrammar[s].charAt(1)!='-' || linesGrammar[s].charAt(2)!='>') {
+				format=false;
+			}
+			if(format) {
+				var separate = linesGrammar[s].split("->");
+				if(separate[1].charAt(0)=='|' || separate[1].charAt(separate[1].length-1)=='|') {
+					format=false;
+				}
+				var transitions = separate[1].split('|'); 
+				for (var m = 0; m < transitions.length && format; m++)
 				{
-					for (var i = 0; i < transitions[m].length && format; i++)
+					if (transitions[m].includes(" ") == false)
 					{
-						var charCode = transitions[m].charCodeAt(i);
-						if (charCode < 65 || charCode > 122)
+						for (var i = 0; i < transitions[m].length && format; i++)
 						{
-							if (charCode == 42)
+							var charCode = transitions[m].charCodeAt(i);
+							if (charCode < 65 || charCode > 122)
 							{
-								format = true;
-							}
-							else
-							{
-								format = false;
+								if (charCode == 42)
+								{
+									format = true;
+								}
+								else
+								{
+									format = false;
+								}
 							}
 						}
 					}
-				}
-				else
-				{
-					format = false;
+					else
+					{
+						format = false;
+					}
 				}
 			}
 		}
