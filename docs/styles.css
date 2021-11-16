@@ -1,0 +1,88 @@
+#fondo {
+    background-image: url("black.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top right;
+}
+
+.btn {
+    border-radius: 10px;
+    color: white;
+    padding: 7px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+}
+.conteiner {
+    border-radius: 10px;
+    color: white;
+    text-align: left;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+.transparent {
+    background-color: rgba(0, 0, 0, 0.7);
+    resize: none;
+}
+
+.example {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    resize: none;
+    border: 0ch; 
+    padding: 0px 50px;
+    text-decoration: underline
+}
+
+.txt {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: left;
+    top: 50%;
+    left: 50%;
+}
+
+.txt2 {
+    color: rgba(255, 255, 255, 0.692);
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: left;
+    top: 50%;
+    left: 50%;
+}
+
+h1 {
+    color: white;
+    font-size: 50px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+}
+
+a {
+    color: white;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    font-weight: bold;
+}
+/* cuadro pequenio de texto*/
+.text_conteiner{
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 100px;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    max-width: 50%;
+    margin: auto;
+}
