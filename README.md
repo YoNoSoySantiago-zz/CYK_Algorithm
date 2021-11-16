@@ -1,6 +1,6 @@
 # CYK_Algorithm�
 
-[✅Enter here✅](https://yonosoysantiago.github.io/CYK_Algorithm/cyk.html)
+[✅Enter here✅](https://yonosoysantiago.github.io/CYK_Algorithm/)
 
 
 ### General Infoℹ️
