@@ -23,9 +23,16 @@ class FNC{
             let transitions = this.grammar[variable];
             for(let i = 0; i < transitions.length && isChomskyNormalForm; i++){
                 let currentTransition = transitions[i];
-                let currentVariables = this.getVariables(currentTransition);
-                if(currentVariables.length > 2){
+                if(currentTransition.length > 2){
                     isChomskyNormalForm = false;
+                }else if(currentTransition.length == 2){
+                    if(currentTransition !== currentTransition.toUpperCase()){
+                        isChomskyNormalForm = false;
+                    }
+                }else{
+                    if(currentTransition !== currentTransition.toLowerCase()){
+                        isChomskyNormalForm = false;
+                    }
                 }
             }
             if(!isChomskyNormalForm){
