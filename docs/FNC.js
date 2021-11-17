@@ -8,14 +8,19 @@ class FNC{
         this.firstVariable = '';
     }
 
-    // Function that is in charge of adding a transition to the grammar
-    // Giving as input a variable and a list of transitions.
+    /**
+     * this method add a transition to the grammar, using the variable as key and the list of transitions as value
+     * @param {String} variable  the variable that will be added to the grammar
+     * @param {Array} transitions the list of transitions that will be added to the grammar
+     */
     addTransition(variable, transitions){
         this.grammar[variable] = transitions; //#TODO: Check necessary conditions before adding
     }
 
-    // Function that checks if the grammar is in Chomsky normal form.
-    // Returns a boolean indicating whether the grammar is in Chomsky normal form or not
+    /**
+     * This method check if the current grammar is in Chomsky normal form
+     * @returns this method returns a boolean indicating whether the grammar is in Chomsky normal form or not
+     */
     checkChomskyNormalForm(){
 
         let isChomskyNormalForm = true;
@@ -42,9 +47,11 @@ class FNC{
         return isChomskyNormalForm;
     }
 
-    // Function that is in charge of checking if a string is accepted by the corresponding grammar
-    // Giving as input a string of n terminals
-    // Returns a boolean indicating whether the string is accepted or not
+    /**
+     * this method check if a string is accepted by the corresponding grammar
+     * @param {String} cadena  the string that will be checked 
+     * @returns {boolean}  a boolean indicating whether the string is accepted or not   
+     */
     checkCadena(cadena){
         //divide the string in tokens
         let terminales = cadena.split('');
@@ -114,6 +121,11 @@ class FNC{
     // Function that is in charge of return all varibles that contains a especific transition
     // Giving as input a transition
     // Returns a list of variables
+    /**
+     * Ths method return all the variables that contains a specific transition
+     * @param {String} transition the transition that will be checked
+     * @returns {Array} the list of variables that contains the transition
+     */
     getVariables(transition){
         let variables = [];
         for(let variable in this.grammar){
@@ -124,8 +136,11 @@ class FNC{
         return variables;   
     }
 
-    // Function that set the value to the first variable of the grammar
-    // Giving as input a string
+ 
+    /**
+     * this method set the value to the first variable of the grammar
+     * @param {string} firstVariable 
+     */
     setFirstVariable(firstVariable){
         this.firstVariable = firstVariable;
     }

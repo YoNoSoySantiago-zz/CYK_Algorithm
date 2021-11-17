@@ -6,6 +6,12 @@
     background-position: top right;
 }
 
+.img {
+    border-radius: 50%;
+    height: "80";
+    width: "80";
+}
+
 .btn {
     border-radius: 10px;
     color: white;
