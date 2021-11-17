@@ -2,8 +2,10 @@ class Controller{
     constructor(){
        this.fnc=new FNC();
     }
-//Method that validates all the conditions to validate if the string belongs 
-//to the grammar using the cyk algorithm
+	 /*validateGrammar
+	 * Method that validates all the conditions to validate if the string belongs to the grammar using the cyk algorithm
+     * @return int njmber of validation grammar
+     */
     validateGrammar(){
         var belongs=false;
         var grammar = document.getElementById("inputTextArea").value;
@@ -30,8 +32,10 @@ class Controller{
         }
 		console.log("gasd");
     }
-    //Method that validates if the string that is entered belongs to the 
-    //grammar has the correct format
+	 /*validateCadena
+	 * Method that validates if the string that is entered belongs to the grammar has the correct format
+     * @return boolean format
+     */
     validateCadena(cadena){ 
         var format=true;
         for(var s=0;s<cadena.length && format==true;s++){
@@ -41,7 +45,10 @@ class Controller{
         }
 		return format;
     }
-    //Method to create the FNC with the correct variables and transitions
+	/* createFNC
+	 * Method to create the FNC with the correct variables and transitions
+     * @param grammar !=null
+     */
     createFNC(grammar){
         var linesGrammar = grammar.split('\n');
         for(var s=0;s<linesGrammar.length;s++){
@@ -52,7 +59,11 @@ class Controller{
 			}
         }
     }
-    //Method that validates if there are two repeated data in an array
+	 /* validateIfExist
+	 * Method that validates if there are two repeated data in an array
+     * @param array !=null
+	 * @return boolean exist
+     */
     validateIfExist(array){
         for (var t=0; t<array.length; t++) {
 			for (var i=t+1; i<array.length; i++) {
@@ -63,8 +74,11 @@ class Controller{
 		}
 		return true;
     }
-    //Method that validates if the variables and transitions to
-    // be added to the FNC have a suitable format
+	 /* validateIfExist
+	 * Method that validates if the variables and transitions to be added to the FNC have a suitable format
+     * @param grammar!=null
+	 * @return boolean format
+     */
     validateGrammarFormat(grammar){
         var linesGrammar = grammar.split("\n");
 		var format = true;
@@ -175,7 +189,10 @@ class Controller{
 			}
 		}
     }
-	//Method that check if the sentence belongs to the grammar
+	 /* checkCadena
+	 * Method that check if the sentence belongs to the grammar
+	 * @return boolean check
+     */
 	checkCadena(cadena){
 		return this.fnc.checkCadena(cadena);
 	}
